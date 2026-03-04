@@ -53,9 +53,10 @@ h1.divider-title{font-weight:900;font-size:clamp(48px,5.5vw,84px);line-height:.9
 h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;letter-spacing:-0.02em;color:var(--text);min-width:220px;max-width:280px;flex-shrink:0}
 h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)}
 .subtitle{font-weight:400;font-size:16px;color:var(--text2);margin-top:12px;line-height:1.5}
-.body-text{font-weight:400;font-size:15px;color:var(--text2);line-height:1.6}
-.body-text li{margin-bottom:10px}
+.body-text{font-weight:400;font-size:15px;color:var(--text2);line-height:1.65;display:flex;align-items:center}
 .body-text ul{padding-left:20px}
+.body-text li{margin-bottom:16px}
+.body-text li:last-child{margin-bottom:0}
 
 /* Number list */
 .num-list{display:flex;flex-direction:column;gap:20px;flex:1}
@@ -66,10 +67,10 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 .num-item .content p{font-size:14px;color:var(--text2);line-height:1.5}
 
 /* Cards grid */
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
-.card{background:var(--white);border-radius:16px;padding:28px;display:flex;flex-direction:column}
+.cards{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;flex:1}
+.card{background:var(--white);border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:flex-start}
 .card h3{font-weight:700;font-size:15px;margin-bottom:8px}
-.card p{font-size:13px;color:var(--text2);line-height:1.5}
+.card p{font-size:14px;color:var(--text2);line-height:1.55}
 .card .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:12px;width:fit-content}
 .tag-done{background:#22c55e22;color:#16a34a}
 .tag-progress{background:#eab30822;color:#ca8a04}
@@ -81,18 +82,19 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 .slide-content.bg-panel .header{border-bottom:none}
 
 /* Blocker list */
-.blocker-list{display:flex;flex-direction:column;gap:16px;flex:1}
-.blocker{padding:20px 24px;background:var(--white);border-radius:16px;border-left:4px solid var(--red)}
-.blocker h3{font-weight:700;font-size:14px;margin-bottom:4px}
-.blocker p{font-size:13px;color:var(--text2);line-height:1.5}
+.blocker-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;align-content:center}
+.blocker{padding:24px 28px;background:var(--white);border-radius:16px;border-left:4px solid var(--red)}
+.blocker h3{font-weight:700;font-size:15px;margin-bottom:6px}
+.blocker p{font-size:14px;color:var(--text2);line-height:1.55}
 
 /* Forward items */
-.forward-list{display:flex;flex-direction:column;gap:16px;flex:1}
-.forward-item{display:flex;gap:16px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--divider)}
-.forward-item:last-child{border-bottom:none}
-.forward-item .num{font-weight:900;font-size:28px;color:var(--text);min-width:36px;opacity:.18}
-.forward-item .content h3{font-weight:700;font-size:14px;margin-bottom:4px}
-.forward-item .content p{font-size:13px;color:var(--text2);line-height:1.5}
+.forward-list{display:flex;flex-direction:column;gap:0;flex:1;justify-content:center}
+.forward-item{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--divider)}
+.forward-item:first-child{padding-top:0}
+.forward-item:last-child{border-bottom:none;padding-bottom:0}
+.forward-item .num{font-weight:900;font-size:32px;color:var(--text);min-width:44px;opacity:.18}
+.forward-item .content h3{font-weight:700;font-size:15px;margin-bottom:6px}
+.forward-item .content p{font-size:14px;color:var(--text2);line-height:1.55}
 
 /* Divider slide — just mark, no wordmark */
 .slide-divider{padding:var(--margin)}
@@ -271,8 +273,8 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
     <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
     <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
   </div>
-  <div class="body">
-    <h2 class="section anim">Blockers &amp;<br>constraints</h2>
+  <div class="body" style="flex-direction:column;gap:24px">
+    <h2 class="section anim" style="min-width:unset;max-width:unset">Blockers &amp; constraints</h2>
     <div class="blocker-list anim anim-d1">
       <div class="blocker">
         <h3>US customer interviews</h3>
