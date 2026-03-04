@@ -13,13 +13,13 @@
   --panel:#D9D5CE;
   --panel-dark:#C8C4BE;
   --text:#1A1A1A;
-  --red:#E63328;
+  --red:#fd2730;
   --text2:#4A4A4A;
   --meta:#6B6B6B;
   --divider:#C8C4BE;
   --font:'Inter','Helvetica Neue',Arial,sans-serif;
   --margin:24px;
-  --radius:28px;
+  --radius:24px;
   --pad:56px;
 }
 
@@ -36,23 +36,21 @@ html,body{height:100%;width:100%;font-family:var(--font);background:var(--white)
 
 /* Content slide (white bg with header) */
 .slide-content{flex-direction:column;padding:0}
-.slide-content .header{display:flex;align-items:center;gap:24px;padding:20px var(--pad);border-bottom:1px solid #eee;flex-shrink:0}
-.slide-content .header .logo-area{display:flex;align-items:center;gap:8px}
-.slide-content .header .meta{color:var(--meta);font-size:13px;margin-left:auto;display:flex;gap:24px}
+.slide-content .header{display:flex;align-items:center;gap:24px;padding:18px var(--pad);flex-shrink:0}
+.slide-content .header .logo-area{display:flex;align-items:center;gap:0}
+.slide-content .header .meta{color:var(--meta);font-size:12px;margin-left:auto;display:flex;gap:24px;font-weight:400}
 .slide-content .body{flex:1;padding:var(--pad);padding-top:40px;overflow:hidden;display:flex;gap:48px}
 
 /* Logo */
-.logo-dots{display:grid;grid-template-columns:repeat(3,8px);gap:3px;width:30px}
-.logo-dots span{width:8px;height:8px;background:var(--red);border-radius:50%}
-.logo-dots span:nth-child(1){visibility:hidden}
-.logo-dots span:nth-child(9){visibility:hidden}
-.logo-text{font-weight:700;font-size:18px;letter-spacing:-0.01em}
+.logo-full{height:28px;width:auto}
+.logo-full-sm{height:22px;width:auto}
+.logo-mark{height:36px;width:auto}
 
 /* Typography */
-h1.hero{font-weight:900;font-size:clamp(56px,6.5vw,96px);line-height:.95;letter-spacing:-0.02em;margin-top:auto}
+h1.hero{font-weight:900;font-size:clamp(56px,6.5vw,96px);line-height:.95;letter-spacing:-0.03em;margin-top:auto}
 h1.hero .red{color:var(--red)}
-h1.divider-title{font-weight:900;font-size:clamp(48px,5.5vw,84px);line-height:.95;letter-spacing:-0.02em}
-h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;letter-spacing:-0.01em;color:var(--text);min-width:220px;max-width:280px;flex-shrink:0}
+h1.divider-title{font-weight:900;font-size:clamp(48px,5.5vw,84px);line-height:.95;letter-spacing:-0.03em}
+h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;letter-spacing:-0.02em;color:var(--text);min-width:220px;max-width:280px;flex-shrink:0}
 h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)}
 .subtitle{font-weight:400;font-size:16px;color:var(--text2);margin-top:12px;line-height:1.5}
 .body-text{font-weight:400;font-size:15px;color:var(--text2);line-height:1.6}
@@ -63,13 +61,13 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 .num-list{display:flex;flex-direction:column;gap:20px;flex:1}
 .num-item{display:flex;gap:20px;align-items:flex-start;padding-bottom:20px;border-bottom:1px solid var(--divider)}
 .num-item:last-child{border-bottom:none}
-.num-item .num{font-weight:900;font-size:32px;color:var(--red);min-width:48px;line-height:1}
+.num-item .num{font-weight:900;font-size:32px;color:var(--text);min-width:48px;line-height:1;opacity:.18}
 .num-item .content h3{font-weight:700;font-size:15px;margin-bottom:4px}
 .num-item .content p{font-size:14px;color:var(--text2);line-height:1.5}
 
 /* Cards grid */
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1}
-.card{background:var(--panel);border-radius:16px;padding:28px;display:flex;flex-direction:column}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
+.card{background:var(--white);border-radius:16px;padding:28px;display:flex;flex-direction:column}
 .card h3{font-weight:700;font-size:15px;margin-bottom:8px}
 .card p{font-size:13px;color:var(--text2);line-height:1.5}
 .card .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:12px;width:fit-content}
@@ -78,9 +76,13 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 .tag-blocked{background:#ef444422;color:#dc2626}
 .tag-planned{background:#3b82f622;color:#2563eb}
 
+/* Cards on panel bg */
+.slide-content.bg-panel{background:var(--panel)}
+.slide-content.bg-panel .header{border-bottom:none}
+
 /* Blocker list */
 .blocker-list{display:flex;flex-direction:column;gap:16px;flex:1}
-.blocker{padding:20px 24px;background:var(--panel);border-radius:16px;border-left:4px solid var(--red)}
+.blocker{padding:20px 24px;background:var(--white);border-radius:16px;border-left:4px solid var(--red)}
 .blocker h3{font-weight:700;font-size:14px;margin-bottom:4px}
 .blocker p{font-size:13px;color:var(--text2);line-height:1.5}
 
@@ -88,9 +90,14 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 .forward-list{display:flex;flex-direction:column;gap:16px;flex:1}
 .forward-item{display:flex;gap:16px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--divider)}
 .forward-item:last-child{border-bottom:none}
-.forward-item .num{font-weight:900;font-size:28px;color:var(--red);min-width:36px}
+.forward-item .num{font-weight:900;font-size:28px;color:var(--text);min-width:36px;opacity:.18}
 .forward-item .content h3{font-weight:700;font-size:14px;margin-bottom:4px}
 .forward-item .content p{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* Divider slide — just mark, no wordmark */
+.slide-divider{padding:var(--margin)}
+.slide-divider .panel{flex:1;background:var(--panel);border-radius:var(--radius);padding:var(--pad);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.slide-divider .logo-mark{position:absolute;bottom:var(--pad);left:var(--pad);height:40px}
 
 /* Stagger animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
@@ -115,26 +122,64 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 </style>
 </head>
 <body>
+
+<!-- Inline SVG definitions -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- Full logo lockup (black text + red dots) -->
+  <symbol id="logo-full" viewBox="0 0 1612.95 288.87">
+    <defs><style>.lf0{fill:#fd2730}</style></defs>
+    <g fill="#1A1A1A">
+      <path d="M464.74,230.83h-85.58l-18.83,50.78h-36.23l78.73-202.25h39.65l78.73,202.25h-37.37l-19.11-50.78ZM391.14,199.16h61.62l-30.81-82.73-30.81,82.73Z"/>
+      <path d="M585.27,285.6c-33.09,0-52.49-24.53-52.49-55.34v-87.58h33.09v81.59c0,17.11,7.99,31.66,27.95,31.66s29.1-12.84,29.1-31.09v-82.16h33.09v113.54c0,11.41.86,20.25,1.43,25.39h-31.66c-.57-3.14-1.14-9.7-1.14-15.41-6.85,12.55-23.1,19.4-39.37,19.4Z"/>
+      <path d="M737.49,142.68h28.81v29.38h-28.81v64.47c0,12.27,5.42,17.4,17.69,17.4,4.56,0,9.98-.86,11.41-1.14v27.39c-2,.86-8.27,3.14-20.25,3.14-25.67,0-41.65-15.4-41.65-41.36v-69.89h-25.67v-29.38h7.13c14.83,0,21.39-9.41,21.39-21.68v-20.83h29.95v42.5Z"/>
+      <path d="M927.29,212c0,42.79-30.52,73.88-72.17,73.88s-71.89-31.09-71.89-73.88,30.52-73.6,71.89-73.6,72.17,31.1,72.17,73.6ZM893.91,212c0-28.81-18.26-43.65-38.8-43.65s-38.8,14.83-38.8,43.65,18.54,44.22,38.8,44.22,38.8-15.12,38.8-44.22Z"/>
+      <path d="M1062.7,136.4c-2-12.55-12.55-31.09-39.65-31.09-20.54,0-34.8,13.69-34.8,29.1,0,12.84,7.99,22.54,23.68,25.96l29.1,5.99c35.66,7.13,54.77,29.67,54.77,58.19,0,31.38-25.39,61.33-71.6,61.33-51.35,0-75.02-33.09-78.16-62.19l31.95-9.13c2,21.11,17.12,40.51,46.21,40.51,24.25,0,36.8-12.27,36.8-27.96,0-13.12-9.7-23.68-27.1-27.38l-28.53-5.99c-30.81-6.28-51.35-26.53-51.35-56.77,0-33.95,31.09-61.9,68.75-61.9,47.64,0,66.18,29.1,70.75,51.63l-30.81,9.7Z"/>
+      <path d="M1166.37,142.68h28.81v29.38h-28.81v64.47c0,12.27,5.42,17.4,17.69,17.4,4.56,0,9.98-.86,11.41-1.14v27.39c-2,.86-8.27,3.14-20.25,3.14-25.67,0-41.65-15.4-41.65-41.36v-69.89h-25.67v-29.38h7.13c14.83,0,21.39-9.41,21.39-21.68v-20.83h29.95v42.5Z"/>
+      <path d="M1356.16,212c0,42.79-30.52,73.88-72.17,73.88s-71.89-31.09-71.89-73.88,30.52-73.6,71.89-73.6,72.17,31.1,72.17,73.6ZM1322.79,212c0-28.81-18.26-43.65-38.8-43.65s-38.8,14.83-38.8,43.65,18.54,44.22,38.8,44.22,38.8-15.12,38.8-44.22Z"/>
+      <path d="M1461.51,175.49c-3.71-.57-7.42-.86-10.84-.86-25.67,0-37.37,14.83-37.37,40.79v66.18h-33.09v-138.92h32.23v22.25c6.56-15.12,21.96-23.96,40.22-23.96,3.99,0,7.42.57,8.84.86v33.66Z"/>
+      <path d="M1608.25,241.95c-7.42,24.25-29.38,43.93-62.76,43.93-37.65,0-71.03-27.39-71.03-74.46,0-43.93,32.52-73.03,67.61-73.03,42.79,0,67.89,28.24,67.89,72.17,0,5.42-.57,9.98-.86,10.56h-101.55c.86,21.11,17.4,36.23,37.94,36.23s30.24-10.56,34.8-24.25l27.96,8.84ZM1576.59,196.88c-.57-16.26-11.41-30.81-34.23-30.81-20.83,0-32.81,15.98-33.95,30.81h68.18Z"/>
+    </g>
+    <g class="lf0">
+      <path d="M2.99,106.09c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72s-12.89-28.72-28.72-28.72c-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M151.77,106.09c0,15.83,12.87,28.72,28.72,28.72s28.72-12.89,28.72-28.72c0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M151.77,254.86c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72,0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M77.37,181.47c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72,0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M134.83,31.71c0-15.83-12.87-28.72-28.72-28.72-15.85,0-28.72,12.89-28.72,28.72,0,15.83,12.89,28.72,28.72,28.72,15.83,0,28.72-12.89,28.72-28.72Z"/>
+      <path d="M2.99,254.86c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72,0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+    </g>
+  </symbol>
+
+  <!-- Dot mark only (red) -->
+  <symbol id="logo-mark" viewBox="0 0 211.81 288.87">
+    <g fill="#fd2730">
+      <path d="M2.79,107.24c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72s-12.89-28.72-28.72-28.72c-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M151.58,107.24c0,15.83,12.87,28.72,28.72,28.72s28.72-12.89,28.72-28.72c0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M151.58,256.01c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72,0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M77.17,182.62c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72,0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+      <path d="M134.64,32.86c0-15.83-12.87-28.72-28.72-28.72-15.85,0-28.72,12.89-28.72,28.72,0,15.83,12.89,28.72,28.72,28.72,15.83,0,28.72-12.89,28.72-28.72Z"/>
+      <path d="M2.79,256.01c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72,0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
+    </g>
+  </symbol>
+</svg>
+
 <div class="deck" id="deck">
 
 <!-- Slide 1: Cover -->
 <div class="slide slide-panel active" data-slide="0">
   <div class="panel">
-    <div class="logo-area anim" style="display:flex;align-items:center;gap:10px">
-      <div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <span class="logo-text">AutoStore</span>
+    <h1 class="hero anim" style="margin-top:auto">Project Lead<br><span class="red">Customer Experience.</span></h1>
+    <p class="subtitle anim anim-d1">Plan, actions, blockers &amp; forward path — Jonas Jakobsen, since 5 Jan 2026</p>
+    <div class="anim anim-d2" style="margin-top:auto;padding-top:24px">
+      <svg class="logo-full" style="height:24px"><use href="#logo-full"/></svg>
     </div>
-    <h1 class="hero anim anim-d1">Project Lead<br><span class="red">Customer Experience.</span></h1>
-    <p class="subtitle anim anim-d2">Plan, actions, blockers &amp; forward path — Jonas Jakobsen, since 5 Jan 2026</p>
   </div>
 </div>
 
 <!-- Slide 2: Divider — Core Intent -->
 <div class="slide slide-panel" data-slide="1">
   <div class="panel">
-    <div class="logo-area anim" style="display:flex;align-items:center;gap:10px">
-      <div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <span class="logo-text">AutoStore</span>
+    <div class="anim">
+      <svg class="logo-full" style="height:24px"><use href="#logo-full"/></svg>
     </div>
     <h1 class="hero anim anim-d1" style="font-size:clamp(36px,4.5vw,64px)">Build a shared<br>current-state <span class="red">baseline</span><br>before strategy.</h1>
     <p class="subtitle anim anim-d2" style="max-width:640px">Create an artifact representing the current Customer Experience as a shared truth across the company — so we can build a CX vision and strategy on a defensible foundation.</p>
@@ -144,7 +189,7 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 <!-- Slide 3: What I planned to do -->
 <div class="slide slide-content" data-slide="2">
   <div class="header">
-    <div class="logo-area"><div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><span class="logo-text">AutoStore</span></div>
+    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
     <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
@@ -163,7 +208,7 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 <!-- Slide 4: What I've done — CX Immersion -->
 <div class="slide slide-content" data-slide="3">
   <div class="header">
-    <div class="logo-area"><div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><span class="logo-text">AutoStore</span></div>
+    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
     <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
@@ -179,10 +224,10 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
   </div>
 </div>
 
-<!-- Slide 5: What I've done — Partner Survey + VoC + Qualitative -->
-<div class="slide slide-content" data-slide="4">
+<!-- Slide 5: What I've done — Other workstreams -->
+<div class="slide slide-content bg-panel" data-slide="4">
   <div class="header">
-    <div class="logo-area"><div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><span class="logo-text">AutoStore</span></div>
+    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
     <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
@@ -213,20 +258,17 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 </div>
 
 <!-- Slide 6: Divider — Blockers -->
-<div class="slide slide-panel" data-slide="5">
+<div class="slide slide-divider" data-slide="5">
   <div class="panel">
-    <div class="logo-area anim" style="display:flex;align-items:center;gap:10px">
-      <div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <span class="logo-text">AutoStore</span>
-    </div>
-    <h1 class="hero anim anim-d1" style="font-size:clamp(40px,5vw,72px)">What I haven't<br>been able to do<br><span style="font-weight:400;font-size:clamp(18px,2vw,24px);color:var(--text2)">(and why)</span></h1>
+    <h1 class="divider-title anim">What I haven't<br>been able to do<br><span style="font-weight:400;font-size:clamp(18px,2vw,24px);color:var(--text2)">(and why)</span></h1>
+    <svg class="logo-mark"><use href="#logo-mark"/></svg>
   </div>
 </div>
 
 <!-- Slide 7: Blockers detail -->
-<div class="slide slide-content" data-slide="6">
+<div class="slide slide-content bg-panel" data-slide="6">
   <div class="header">
-    <div class="logo-area"><div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><span class="logo-text">AutoStore</span></div>
+    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
     <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
@@ -255,7 +297,7 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 <!-- Slide 8: Forward path -->
 <div class="slide slide-content" data-slide="7">
   <div class="header">
-    <div class="logo-area"><div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><span class="logo-text">AutoStore</span></div>
+    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
     <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
@@ -274,9 +316,8 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
   <div class="panel" style="justify-content:center;align-items:center;text-align:center">
     <h1 class="divider-title anim" style="font-size:clamp(36px,4vw,56px)">Current-state first.<br><span style="color:var(--red)">Strategy follows.</span></h1>
     <p class="subtitle anim anim-d1" style="max-width:500px;margin-top:16px">Questions, feedback, or areas you'd like me to go deeper on?</p>
-    <div class="anim anim-d2" style="margin-top:48px;display:flex;align-items:center;gap:10px;justify-content:center">
-      <div class="logo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <span class="logo-text">AutoStore</span>
+    <div class="anim anim-d2" style="margin-top:48px">
+      <svg style="height:28px;width:auto"><use href="#logo-full"/></svg>
     </div>
   </div>
 </div>
@@ -314,7 +355,6 @@ document.addEventListener('keydown',e=>{
   if(e.key==='End'){cur=total-1;show(cur)}
 });
 
-// Touch/swipe support
 let tx=0;
 document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX});
 document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?go(1):go(-1)}});
