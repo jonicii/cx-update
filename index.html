@@ -134,54 +134,73 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
 
 /* Mobile responsive */
 @media (max-width:768px){
-  :root{--margin:12px;--pad:24px;--radius:16px}
+  :root{--margin:10px;--pad:20px;--radius:16px}
   
-  /* Allow scrolling on mobile */
-  html,body{overflow:auto;height:auto}
-  .deck{display:flex;flex-direction:column;height:auto}
-  .slide{position:relative;inset:auto;opacity:1;pointer-events:auto;transform:none;min-height:100vh;min-height:100svh}
-  .slide:not(:first-child){display:none}
-  .slide.active{display:flex}
+  /* Allow scrolling within each slide */
+  html,body{overflow:hidden;height:100%;width:100%}
+  .deck{width:100%;height:100%}
+  .slide{overflow-y:auto;overflow-x:hidden;width:100%}
   
   /* Typography scale down */
-  h1.hero{font-size:clamp(32px,8vw,48px)}
-  h1.divider-title{font-size:clamp(28px,7vw,44px)}
-  h2.section{font-size:clamp(22px,6vw,32px);min-width:unset;max-width:unset}
+  h1.hero{font-size:28px !important;letter-spacing:-0.02em}
+  h1.divider-title{font-size:26px !important}
+  h2.section{font-size:22px !important;min-width:unset !important;max-width:unset !important;flex-shrink:0}
+  .subtitle{font-size:14px}
   
   /* Content slides: stack vertically */
-  .slide-content .body{flex-direction:column;gap:20px;overflow-y:auto;padding:var(--pad);padding-top:20px}
+  .slide-content .header{padding:12px var(--pad)}
+  .slide-content .header .meta{display:none}
+  .slide-content .body{flex-direction:column !important;gap:16px;overflow-y:auto;overflow-x:hidden;padding:var(--pad);padding-top:16px}
   
   /* Cards: single column */
-  .cards{grid-template-columns:1fr;grid-template-rows:auto}
-  .blocker-list{grid-template-columns:1fr}
-  .outcomes{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr !important;grid-template-rows:auto !important;gap:12px}
+  .blocker-list{grid-template-columns:1fr !important;gap:12px}
+  .outcomes{grid-template-columns:1fr !important;gap:12px}
   
-  /* Number lists: tighter */
-  .num-item .num{font-size:24px;min-width:36px}
-  .forward-item .num{font-size:24px;min-width:36px}
+  /* Number lists: full width, no overflow */
+  .num-list,.forward-list,.learning-list{width:100%}
+  .num-item,.forward-item{gap:12px}
+  .num-item .num{font-size:22px;min-width:32px}
+  .forward-item .num{font-size:22px;min-width:32px}
+  .num-item .content h3,.forward-item .content h3{font-size:14px}
+  .num-item .content p,.forward-item .content p{font-size:13px}
+  .learning h3{font-size:14px}
+  .learning p{font-size:13px;padding-left:32px}
+  .learning h3 .num{font-size:20px;min-width:24px}
+  
+  /* Cards/blockers text */
+  .card h3,.blocker h3{font-size:14px}
+  .card p,.blocker p,.body-text{font-size:13px}
+  .card{padding:20px}
+  .blocker{padding:16px 20px}
   
   /* Cover: stack image below text */
-  .slide-panel .panel{flex-direction:column !important;padding-right:var(--pad) !important}
-  .slide-panel .panel > div[style*="flex:0 0 40%"]{flex:0 0 auto !important;height:200px;border-radius:16px !important;margin-top:16px}
-  .slide-panel .panel > div[style*="flex:0 0 40%"] img{border-radius:16px !important}
+  .slide-panel .panel{flex-direction:column !important;padding:var(--pad) !important;gap:16px}
+  .slide-panel .panel > div[style*="flex:0 0 40%"]{flex:0 0 auto !important;height:180px;border-radius:12px !important;overflow:hidden}
+  .slide-panel .panel > div[style*="flex:0 0 40%"] img{border-radius:12px !important;object-fit:cover;width:100%;height:100%}
+  .slide-panel .panel > div[style*="flex:1"]{padding-right:0 !important}
   
-  /* Hover details: always show on mobile (no hover) */
-  .detail{max-height:200px;opacity:1;margin-top:8px;padding-top:8px;border-top:1px solid var(--divider)}
+  /* Hover details: show on mobile via tap-friendly approach, keep collapsed by default */
+  .detail{max-height:none;opacity:1;margin-top:8px;padding-top:8px;border-top:1px solid var(--divider)}
   
-  /* Nav buttons bigger for touch */
-  .nav button{width:48px;height:48px;font-size:22px}
-  .slide-counter{font-size:14px}
+  /* Nav */
+  .nav{bottom:16px;right:16px}
+  .nav button{width:44px;height:44px;font-size:20px}
+  .slide-counter{bottom:20px;left:16px;font-size:13px}
+  .progress{height:2px}
   
   /* Divider slide mark */
-  .slide-divider .logo-mark{position:relative;bottom:auto;left:auto;margin-top:auto;height:32px}
+  .slide-divider .logo-mark{position:relative;bottom:auto;left:auto;margin-top:auto;height:28px}
+  
+  /* Logo */
+  .logo-full-sm{height:18px}
 }
 
-@media (max-width:480px){
+@media (max-width:380px){
   :root{--pad:16px;--margin:8px}
-  h1.hero{font-size:clamp(26px,7vw,36px)}
-  h1.divider-title{font-size:clamp(24px,6.5vw,32px)}
-  .card{padding:16px}
-  .blocker{padding:16px}
+  h1.hero{font-size:24px !important}
+  h1.divider-title{font-size:22px !important}
+  h2.section{font-size:20px !important}
 }
 
 /* Nav */
