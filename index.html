@@ -117,9 +117,10 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
 
 /* Expandable detail on hover */
 .detail{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s ease,margin .3s ease;opacity:0;margin-top:0;font-size:13px;color:var(--text2);line-height:1.5;border-top:1px solid transparent}
-.card:hover .detail,.blocker:hover .detail,.learning:hover .detail,.outcome:hover .detail{max-height:200px;opacity:1;margin-top:10px;padding-top:10px;border-top:1px solid var(--divider)}
-.card,.blocker,.outcome{transition:transform .2s ease,box-shadow .2s ease;cursor:default}
+.card:hover .detail,.blocker:hover .detail,.learning:hover .detail,.outcome:hover .detail,.forward-item:hover .detail{max-height:200px;opacity:1;margin-top:10px;padding-top:10px;border-top:1px solid var(--divider)}
+.card,.blocker,.outcome,.forward-item{transition:transform .2s ease,box-shadow .2s ease;cursor:default}
 .card:hover,.blocker:hover,.outcome:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.forward-item:hover{background:rgba(0,0,0,.02);border-radius:8px;margin-left:-8px;margin-right:-8px;padding-left:8px;padding-right:8px}
 .learning{transition:background .2s ease;cursor:default;padding-left:8px;padding-right:8px;margin-left:-8px;margin-right:-8px;border-radius:8px}
 .learning:hover{background:rgba(0,0,0,.03)}
 
@@ -340,7 +341,7 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
   <div class="body">
     <h2 class="section anim">How I suggest<br>we move<br>forward</h2>
     <div class="forward-list anim anim-d1">
-      <div class="forward-item"><span class="num">01</span><div class="content"><h3>Use the CX Immersion artifact as the North Star</h3><p>Complete the baseline: current-state narrative, CX variability map, CX truths, blind spots, and value-at-risk framing. Ground all strategic decisions in reality.</p></div></div>
+      <div class="forward-item"><span class="num">01</span><div class="content"><h3>Use the CX Immersion artifact as the North Star</h3><p>Complete the baseline: current-state narrative, CX variability map, CX truths, blind spots, and value-at-risk framing. Ground all strategic decisions in reality.</p><div class="detail" style="padding-left:0"><strong>The artifact will include:</strong> A clear narrative of what it feels like to be an AutoStore customer today · A CX variability map across customers, partners, and journey stages · 5–7 CX truths (core, slightly uncomfortable insights from synthesis) · Explicit blind spots around ownership, partner assumptions, and internal beliefs vs. customer reality · Synthesized moments, frictions, value impacts, and quotes captured with strict data-discipline · A value-at-risk framing for executive alignment · A bridge into Phase 2 partner diagnostics. In short: the factual, organization-wide baseline we need before designing our CX vision, strategy, and partner model.</div></div></div>
       <div class="forward-item"><span class="num">02</span><div class="content"><h3>Re-evaluate Partner–AutoStore dynamics</h3><p>Structural misalignments in partner incentives, SLAs, and responsibilities are a major systemic CX opportunity. Phase 2 should define clear responsibilities, shared KPIs, alignment on innovation delivery, and transparent service offerings.</p></div></div>
       <div class="forward-item"><span class="num">03</span><div class="content"><h3>Define pragmatic Voice of Customer approach</h3><p>After Forrester input, propose minimum viable end-customer measurement — what, when, who owns — including partner-aligned metric sharing if viable.</p></div></div>
     </div>
@@ -358,7 +359,7 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
     <div class="outcomes anim anim-d1">
       <div class="outcome">
         <div class="icon">📋</div>
-        <div class="content"><h3>Immersion artifact completed</h3><p>Current-state CX narrative, variability map, truths, blind spots, and value-at-risk framing delivered as a shared reference.</p></div>
+        <div class="content"><h3>Immersion artifact completed</h3><p>Current-state CX narrative, variability map, truths, blind spots, and value-at-risk framing delivered as a shared reference.</p><div class="detail" style="padding-left:0">Specifically: what it feels like to be a customer today · how experience varies across partners and journey stages · 5–7 slightly uncomfortable CX truths · where we create value vs. where we lose or delay it · a bridge into Phase 2 partner diagnostics.</div></div>
       </div>
       <div class="outcome">
         <div class="icon">📊</div>
