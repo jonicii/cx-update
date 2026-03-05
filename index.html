@@ -132,6 +132,58 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
 .slide.active .anim-d3{animation-delay:.3s}
 .slide.active .anim-d4{animation-delay:.4s}
 
+/* Mobile responsive */
+@media (max-width:768px){
+  :root{--margin:12px;--pad:24px;--radius:16px}
+  
+  /* Allow scrolling on mobile */
+  html,body{overflow:auto;height:auto}
+  .deck{display:flex;flex-direction:column;height:auto}
+  .slide{position:relative;inset:auto;opacity:1;pointer-events:auto;transform:none;min-height:100vh;min-height:100svh}
+  .slide:not(:first-child){display:none}
+  .slide.active{display:flex}
+  
+  /* Typography scale down */
+  h1.hero{font-size:clamp(32px,8vw,48px)}
+  h1.divider-title{font-size:clamp(28px,7vw,44px)}
+  h2.section{font-size:clamp(22px,6vw,32px);min-width:unset;max-width:unset}
+  
+  /* Content slides: stack vertically */
+  .slide-content .body{flex-direction:column;gap:20px;overflow-y:auto;padding:var(--pad);padding-top:20px}
+  
+  /* Cards: single column */
+  .cards{grid-template-columns:1fr;grid-template-rows:auto}
+  .blocker-list{grid-template-columns:1fr}
+  .outcomes{grid-template-columns:1fr}
+  
+  /* Number lists: tighter */
+  .num-item .num{font-size:24px;min-width:36px}
+  .forward-item .num{font-size:24px;min-width:36px}
+  
+  /* Cover: stack image below text */
+  .slide-panel .panel{flex-direction:column !important;padding-right:var(--pad) !important}
+  .slide-panel .panel > div[style*="flex:0 0 40%"]{flex:0 0 auto !important;height:200px;border-radius:16px !important;margin-top:16px}
+  .slide-panel .panel > div[style*="flex:0 0 40%"] img{border-radius:16px !important}
+  
+  /* Hover details: always show on mobile (no hover) */
+  .detail{max-height:200px;opacity:1;margin-top:8px;padding-top:8px;border-top:1px solid var(--divider)}
+  
+  /* Nav buttons bigger for touch */
+  .nav button{width:48px;height:48px;font-size:22px}
+  .slide-counter{font-size:14px}
+  
+  /* Divider slide mark */
+  .slide-divider .logo-mark{position:relative;bottom:auto;left:auto;margin-top:auto;height:32px}
+}
+
+@media (max-width:480px){
+  :root{--pad:16px;--margin:8px}
+  h1.hero{font-size:clamp(26px,7vw,36px)}
+  h1.divider-title{font-size:clamp(24px,6.5vw,32px)}
+  .card{padding:16px}
+  .blocker{padding:16px}
+}
+
 /* Nav */
 .nav{position:fixed;bottom:24px;right:24px;display:flex;gap:8px;z-index:100}
 .nav button{width:40px;height:40px;border:none;border-radius:50%;background:var(--panel);color:var(--text);font-size:18px;cursor:pointer;transition:background .2s}
