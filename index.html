@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Lead CX — Update</title>
+<title>CX Immersion — Status &amp; Preliminary Learnings</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -25,49 +25,55 @@
 
 html,body{height:100%;width:100%;font-family:var(--font);background:var(--white);color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased}
 
-/* Slide deck */
 .deck{position:relative;width:100%;height:100%}
 .slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease,transform .45s ease;transform:translateY(8px);display:flex;align-items:stretch;justify-content:stretch}
 .slide.active{opacity:1;pointer-events:auto;transform:none}
 
-/* Panel slide (cover, title, divider) */
+/* Panel slide */
 .slide-panel{padding:var(--margin)}
 .slide-panel .panel{flex:1;background:var(--panel);border-radius:var(--radius);padding:var(--pad);display:flex;flex-direction:column;position:relative;overflow:hidden}
 
-/* Content slide (white bg with header) */
+/* Divider slide */
+.slide-divider{padding:var(--margin)}
+.slide-divider .panel{flex:1;background:var(--panel);border-radius:var(--radius);padding:var(--pad);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.slide-divider .logo-mark{position:absolute;bottom:var(--pad);left:var(--pad);height:40px}
+
+/* Content slide */
 .slide-content{flex-direction:column;padding:0}
 .slide-content .header{display:flex;align-items:center;gap:24px;padding:18px var(--pad);flex-shrink:0}
 .slide-content .header .logo-area{display:flex;align-items:center;gap:0}
 .slide-content .header .meta{color:var(--meta);font-size:12px;margin-left:auto;display:flex;gap:24px;font-weight:400}
 .slide-content .body{flex:1;padding:var(--pad);padding-top:40px;overflow:hidden;display:flex;gap:48px}
 
+.slide-content.bg-panel{background:var(--panel)}
+.slide-content.bg-panel .header{border-bottom:none}
+
 /* Logo */
-.logo-full{height:28px;width:auto}
 .logo-full-sm{height:22px;width:auto}
-.logo-mark{height:36px;width:auto}
 
 /* Typography */
-h1.hero{font-weight:900;font-size:clamp(56px,6.5vw,96px);line-height:.95;letter-spacing:-0.03em;margin-top:auto}
+h1.hero{font-weight:900;font-size:clamp(48px,6vw,88px);line-height:.95;letter-spacing:-0.03em;margin-top:auto}
 h1.hero .red{color:var(--red)}
-h1.divider-title{font-weight:900;font-size:clamp(48px,5.5vw,84px);line-height:.95;letter-spacing:-0.03em}
+h1.divider-title{font-weight:900;font-size:clamp(40px,5vw,76px);line-height:.95;letter-spacing:-0.03em}
 h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;letter-spacing:-0.02em;color:var(--text);min-width:220px;max-width:280px;flex-shrink:0}
-h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)}
 .subtitle{font-weight:400;font-size:16px;color:var(--text2);margin-top:12px;line-height:1.5}
 .body-text{font-weight:400;font-size:15px;color:var(--text2);line-height:1.65;display:flex;align-items:center}
 .body-text ul{padding-left:20px}
-.body-text li{margin-bottom:16px}
+.body-text li{margin-bottom:14px}
 .body-text li:last-child{margin-bottom:0}
 
 /* Number list */
-.num-list{display:flex;flex-direction:column;gap:20px;flex:1}
-.num-item{display:flex;gap:20px;align-items:flex-start;padding-bottom:20px;border-bottom:1px solid var(--divider)}
-.num-item:last-child{border-bottom:none}
+.num-list{display:flex;flex-direction:column;gap:0;flex:1;justify-content:center}
+.num-item{display:flex;gap:20px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--divider)}
+.num-item:first-child{padding-top:0}
+.num-item:last-child{border-bottom:none;padding-bottom:0}
 .num-item .num{font-weight:900;font-size:32px;color:var(--text);min-width:48px;line-height:1;opacity:.18}
 .num-item .content h3{font-weight:700;font-size:15px;margin-bottom:4px}
 .num-item .content p{font-size:14px;color:var(--text2);line-height:1.5}
 
 /* Cards grid */
 .cards{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;flex:1}
+.cards.cols-2-single{grid-template-rows:1fr}
 .card{background:var(--white);border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:flex-start}
 .card h3{font-weight:700;font-size:15px;margin-bottom:8px}
 .card p{font-size:14px;color:var(--text2);line-height:1.55}
@@ -76,16 +82,22 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 .tag-progress{background:#eab30822;color:#ca8a04}
 .tag-blocked{background:#ef444422;color:#dc2626}
 .tag-planned{background:#3b82f622;color:#2563eb}
-
-/* Cards on panel bg */
-.slide-content.bg-panel{background:var(--panel)}
-.slide-content.bg-panel .header{border-bottom:none}
+.tag-paused{background:#6b728022;color:#4B5563}
 
 /* Blocker list */
 .blocker-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;align-content:center}
 .blocker{padding:24px 28px;background:var(--white);border-radius:16px;border-left:4px solid var(--red)}
 .blocker h3{font-weight:700;font-size:15px;margin-bottom:6px}
 .blocker p{font-size:14px;color:var(--text2);line-height:1.55}
+
+/* Learnings */
+.learning-list{display:flex;flex-direction:column;gap:0;flex:1;justify-content:center}
+.learning{padding:20px 0;border-bottom:1px solid var(--divider)}
+.learning:first-child{padding-top:0}
+.learning:last-child{border-bottom:none;padding-bottom:0}
+.learning h3{font-weight:700;font-size:15px;margin-bottom:6px;display:flex;align-items:baseline;gap:12px}
+.learning h3 .num{font-weight:900;font-size:24px;color:var(--red);min-width:28px}
+.learning p{font-size:14px;color:var(--text2);line-height:1.6;padding-left:40px}
 
 /* Forward items */
 .forward-list{display:flex;flex-direction:column;gap:0;flex:1;justify-content:center}
@@ -96,38 +108,32 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 .forward-item .content h3{font-weight:700;font-size:15px;margin-bottom:6px}
 .forward-item .content p{font-size:14px;color:var(--text2);line-height:1.55}
 
-/* Divider slide — just mark, no wordmark */
-.slide-divider{padding:var(--margin)}
-.slide-divider .panel{flex:1;background:var(--panel);border-radius:var(--radius);padding:var(--pad);display:flex;flex-direction:column;position:relative;overflow:hidden}
-.slide-divider .logo-mark{position:absolute;bottom:var(--pad);left:var(--pad);height:40px}
+/* Outcomes grid */
+.outcomes{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;align-content:center}
+.outcome{background:var(--white);border-radius:16px;padding:28px;display:flex;align-items:flex-start;gap:16px}
+.outcome .icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.outcome .content h3{font-weight:700;font-size:15px;margin-bottom:4px}
+.outcome .content p{font-size:13px;color:var(--text2);line-height:1.5}
 
-/* Stagger animations */
+/* Animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .slide.active .anim{animation:fadeUp .5s ease both}
 .slide.active .anim-d1{animation-delay:.1s}
 .slide.active .anim-d2{animation-delay:.2s}
 .slide.active .anim-d3{animation-delay:.3s}
 .slide.active .anim-d4{animation-delay:.4s}
-.slide.active .anim-d5{animation-delay:.5s}
-.slide.active .anim-d6{animation-delay:.6s}
 
-/* Navigation */
+/* Nav */
 .nav{position:fixed;bottom:24px;right:24px;display:flex;gap:8px;z-index:100}
 .nav button{width:40px;height:40px;border:none;border-radius:50%;background:var(--panel);color:var(--text);font-size:18px;cursor:pointer;transition:background .2s}
 .nav button:hover{background:var(--panel-dark)}
 .progress{position:fixed;bottom:0;left:0;height:3px;background:var(--red);transition:width .4s ease;z-index:100}
 .slide-counter{position:fixed;bottom:28px;left:24px;font-size:13px;color:var(--meta);z-index:100}
-
-/* Keyboard hint */
-.keys-hint{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--divider);z-index:100;opacity:0;transition:opacity 2s}
-.keys-hint.show{opacity:1}
 </style>
 </head>
 <body>
 
-<!-- Inline SVG definitions -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <!-- Full logo lockup (black text + red dots) -->
   <symbol id="logo-full" viewBox="0 0 1612.95 288.87">
     <defs><style>.lf0{fill:#fd2730}</style></defs>
     <g fill="#1A1A1A">
@@ -150,8 +156,6 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
       <path d="M2.99,254.86c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72,0-15.83-12.89-28.72-28.72-28.72-15.83,0-28.72,12.89-28.72,28.72Z"/>
     </g>
   </symbol>
-
-  <!-- Dot mark only (red) -->
   <symbol id="logo-mark" viewBox="0 0 211.81 288.87">
     <g fill="#fd2730">
       <path d="M2.79,107.24c0,15.83,12.87,28.72,28.72,28.72,15.85,0,28.72-12.89,28.72-28.72s-12.89-28.72-28.72-28.72c-15.83,0-28.72,12.89-28.72,28.72Z"/>
@@ -169,22 +173,22 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 <!-- Slide 1: Cover -->
 <div class="slide slide-panel active" data-slide="0">
   <div class="panel">
-    <h1 class="hero anim" style="margin-top:auto">Project Lead<br><span class="red">Customer Experience.</span></h1>
-    <p class="subtitle anim anim-d1">Plan, actions, blockers &amp; forward path — Jonas Jakobsen, since 5 Jan 2026</p>
+    <h1 class="hero anim" style="margin-top:auto">CX Immersion<br><span class="red">Status &amp; Learnings.</span></h1>
+    <p class="subtitle anim anim-d1">Prepared for Carlos — Jonas Jakobsen, March 2026</p>
     <div class="anim anim-d2" style="margin-top:auto;padding-top:24px">
-      <svg class="logo-full" style="height:24px"><use href="#logo-full"/></svg>
+      <svg style="height:24px;width:auto"><use href="#logo-full"/></svg>
     </div>
   </div>
 </div>
 
-<!-- Slide 2: Divider — Core Intent -->
+<!-- Slide 2: Intent -->
 <div class="slide slide-panel" data-slide="1">
   <div class="panel">
     <div class="anim">
-      <svg class="logo-full" style="height:24px"><use href="#logo-full"/></svg>
+      <svg style="height:24px;width:auto"><use href="#logo-full"/></svg>
     </div>
-    <h1 class="hero anim anim-d1" style="font-size:clamp(36px,4.5vw,64px)">Build a shared<br>current-state <span class="red">baseline</span><br>before strategy.</h1>
-    <p class="subtitle anim anim-d2" style="max-width:640px">Create an artifact representing the current Customer Experience as a shared truth across the company — so we can build a CX vision and strategy on a defensible foundation.</p>
+    <h1 class="hero anim anim-d1" style="font-size:clamp(32px,4vw,58px)">Understand today's<br>experience <span class="red">before</span><br>defining any future<br>vision or strategy.</h1>
+    <p class="subtitle anim anim-d2" style="max-width:680px">Create a shared, defensible baseline of the current AutoStore Customer Experience — reflecting reality across customers, partners, journey stages, and maturity levels.</p>
   </div>
 </div>
 
@@ -192,131 +196,173 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 <div class="slide slide-content" data-slide="2">
   <div class="header">
     <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
-    <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
+    <div class="meta"><span>CX Immersion</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
     <h2 class="section anim">What I planned<br>to do</h2>
     <div class="num-list anim anim-d1">
-      <div class="num-item"><span class="num">01</span><div class="content"><h3>CX Immersion (current-state baseline)</h3><p>Run a disciplined discovery process, then synthesize into a current-state narrative and system view.</p></div></div>
-      <div class="num-item"><span class="num">02</span><div class="content"><h3>Personal CX immersion</h3><p>Increase firsthand exposure to customer reality to improve prioritization and credibility.</p></div></div>
-      <div class="num-item"><span class="num">03</span><div class="content"><h3>End-customer measurement (VoC / surveys)</h3><p>Investigate how to establish meaningful CX measurement.</p></div></div>
-      <div class="num-item"><span class="num">04</span><div class="content"><h3>Partner survey improvement</h3><p>Improve usability, actionability, and trendability of partner feedback signals.</p></div></div>
-      <div class="num-item"><span class="num">05</span><div class="content"><h3>Qualitative data acquisition</h3><p>Create a repeatable way to capture daily CX signals so learnings aren't trapped in conversations.</p></div></div>
-      <div class="num-item"><span class="num">06</span><div class="content"><h3>CX Strategy</h3><p>Sequence strategy after current-state alignment — intentionally last.</p></div></div>
+      <div class="num-item"><span class="num">01</span><div class="content"><h3>CX Immersion baseline</h3><p>A shared current-state artifact — narrative, variability map, CX truths, blind spots, and value-at-risk framing.</p></div></div>
+      <div class="num-item"><span class="num">02</span><div class="content"><h3>End-customer measurement framework</h3><p>Investigate how to establish meaningful CX measurement with end-customers.</p></div></div>
+      <div class="num-item"><span class="num">03</span><div class="content"><h3>Partner survey improvements</h3><p>Improve usability, actionability, and trendability of partner feedback signals.</p></div></div>
+      <div class="num-item"><span class="num">04</span><div class="content"><h3>Qualitative insight capture</h3><p>Create a repeatable way to capture daily CX signals so learnings aren't trapped in conversations.</p></div></div>
+      <div class="num-item"><span class="num">05</span><div class="content"><h3>Personal &amp; organizational CX immersion</h3><p>Increase firsthand exposure to customer reality to improve prioritization and credibility.</p></div></div>
     </div>
   </div>
 </div>
 
-<!-- Slide 4: What I've done — CX Immersion -->
-<div class="slide slide-content" data-slide="3">
+<!-- Slide 4: What I've done — Immersion + Partner Survey -->
+<div class="slide slide-content bg-panel" data-slide="3">
   <div class="header">
     <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
-    <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
+    <div class="meta"><span>CX Immersion</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
-    <h2 class="section anim">What I've done<br><span style="font-weight:400;font-size:18px;color:var(--text2)">CX Immersion</span></h2>
-    <div class="body-text anim anim-d1" style="flex:1">
-      <ul>
-        <li><strong>Established Immersion framing internally:</strong> diagnostic leadership exercise (not a CX program/research/backlog), strict interview discipline, and "align on reality before solutioning."</li>
-        <li><strong>Socialized participation model</strong> (1:1 intro → 1–2 interviews → short summary → in-person synthesis workshop) and recruited cross-functional stakeholders.</li>
-        <li><strong>Assembled customer targets</strong> for interviews; best progress in EMEA while US/APAC requires more internal enablement and introductions.</li>
-        <li><strong>Adjusted expectations:</strong> interviews can start early March, but synthesis likely shifts later than mid-March due to recruitment lead-time.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 5: What I've done — Other workstreams -->
-<div class="slide slide-content bg-panel" data-slide="4">
-  <div class="header">
-    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
-    <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
-  </div>
-  <div class="body">
-    <h2 class="section anim">What I've done<br><span style="font-weight:400;font-size:18px;color:var(--text2)">Other workstreams</span></h2>
-    <div class="cards anim anim-d1">
+    <h2 class="section anim">What I've<br>done so far</h2>
+    <div class="cards cols-2-single anim anim-d1" style="grid-template-rows:1fr 1fr">
+      <div class="card">
+        <span class="tag tag-progress">In progress</span>
+        <h3>Immersion project setup</h3>
+        <p>Engaged cross-functional stakeholders for customer interviews; early signals show high interest in direct customer exposure. Secured contact with 15–20 customers, though with significant effort due to missing contacts and low responsiveness.</p>
+      </div>
       <div class="card">
         <span class="tag tag-done">Delivered</span>
-        <h3>Partner Survey — data usability</h3>
-        <p>Moved data into queryable setup for targeted readouts by partner/region. Connected free-text to scores. Flagged low participation as key limitation.</p>
+        <h3>Partner survey — data usability</h3>
+        <p>Previously unreadable PBI output transformed via Genie: partner- and region-specific filtering, comments linked to scores. Insights remain limited due to low response rates.</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-paused">Pending Forrester call</span>
+        <h3>End-customer survey exploration</h3>
+        <p>Element and Swisslog confirm NPS/CSAT programs exist, though likely insufficiently AutoStore-specific. Progress pending Forrester advisory call (March 6th).</p>
       </div>
       <div class="card">
         <span class="tag tag-progress">In progress</span>
-        <h3>End-customer VoC</h3>
-        <p>Identified gap: no central ownership. Booked Forrester advisory call to avoid building low-value survey. Hypothesis: partner-held CSAT/NPS lacks AutoStore specificity.</p>
-      </div>
-      <div class="card">
-        <span class="tag tag-progress">In progress</span>
-        <h3>Qualitative signal capture</h3>
-        <p>Recurring frictions appear daily but capture is inconsistent. Considering lightweight mechanism (e.g., Teams bot) to summarize, categorize, store and enable trend queries.</p>
-      </div>
-      <div class="card" style="background:transparent;border:2px dashed var(--divider)">
-        <span class="tag tag-planned">By design — later</span>
-        <h3>CX Strategy</h3>
-        <p>Intentionally not yet progressed. Strategy should follow shared current-state baseline and synthesis outputs.</p>
+        <h3>Qualitative data foundation</h3>
+        <p>Daily conversations surface recurring frictions, but structured capture remains challenging. Considering a Teams-based feedback bot to systematically collect and categorize inputs.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 6: Divider — Blockers -->
-<div class="slide slide-divider" data-slide="5">
+<!-- Slide 5: Divider — Blockers -->
+<div class="slide slide-divider" data-slide="4">
   <div class="panel">
     <h1 class="divider-title anim">What I haven't<br>been able to do<br><span style="font-weight:400;font-size:clamp(18px,2vw,24px);color:var(--text2)">(and why)</span></h1>
     <svg class="logo-mark"><use href="#logo-mark"/></svg>
   </div>
 </div>
 
-<!-- Slide 7: Blockers detail -->
-<div class="slide slide-content bg-panel" data-slide="6">
+<!-- Slide 6: Blockers -->
+<div class="slide slide-content bg-panel" data-slide="5">
   <div class="header">
     <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
-    <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
+    <div class="meta"><span>CX Immersion</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body" style="flex-direction:column;gap:24px">
     <h2 class="section anim" style="min-width:unset;max-width:unset">Blockers &amp; constraints</h2>
     <div class="blocker-list anim anim-d1">
       <div class="blocker">
-        <h3>US customer interviews</h3>
-        <p>Slow traction — internal teams appear more protective/less inclined to allocate resources, limiting customer access.</p>
+        <h3>US &amp; APAC customer interviews</h3>
+        <p>Lower internal prioritization, more protective customer-access behavior, and no central customer-access management system.</p>
       </div>
       <div class="blocker">
         <h3>End-customer survey framework</h3>
-        <p>Intentionally paused pending Forrester guidance to ensure we build something meaningful rather than something fast.</p>
+        <p>Intentionally paused until Forrester discussion — staying aligned with immersion discipline (no solutioning before diagnosing).</p>
       </div>
       <div class="blocker">
-        <h3>Partner survey improvements (beyond data usability)</h3>
-        <p>Constrained by ownership boundaries — need to collaborate without disrupting existing processes (survey owned by Beata).</p>
+        <h3>Partner survey ownership</h3>
+        <p>Advancing structurally requires coordination with Beata, who currently owns the survey — making careful stakeholder alignment essential.</p>
       </div>
       <div class="blocker">
-        <h3>CX Strategy progression</h3>
-        <p>Not yet progressed by design — strategy should follow shared current-state baseline and synthesis outputs.</p>
+        <h3>Systematic qualitative capture</h3>
+        <p>A scalable method has not been established yet due to tooling and process dependencies.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 8: Forward path -->
+<!-- Slide 7: Divider — Learnings -->
+<div class="slide slide-divider" data-slide="6">
+  <div class="panel">
+    <h1 class="divider-title anim">Preliminary<br><span class="red">learnings.</span></h1>
+    <p class="subtitle anim anim-d1" style="max-width:560px">Structural patterns emerging consistently across conversations and internal reflections — robust even at this early stage.</p>
+    <svg class="logo-mark"><use href="#logo-mark"/></svg>
+  </div>
+</div>
+
+<!-- Slide 8: Learnings -->
 <div class="slide slide-content" data-slide="7">
   <div class="header">
     <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
-    <div class="meta"><span>Project Lead CX</span><span>autostoresystem.com</span></div>
+    <div class="meta"><span>CX Immersion</span><span>autostoresystem.com</span></div>
   </div>
   <div class="body">
-    <h2 class="section anim">Forward path<br><span style="font-weight:400;font-size:18px;color:var(--text2)">Next 60–90 days</span></h2>
-    <div class="forward-list anim anim-d1">
-      <div class="forward-item"><span class="num">01</span><div class="content"><h3>Deliver the CX Immersion baseline artifact</h3><p>Current-state CX narrative, variability map + drivers, explicit blind spots, 5–7 CX truths, value-at-risk framing, and bridge to Phase 2 partner involvement.</p></div></div>
-      <div class="forward-item"><span class="num">02</span><div class="content"><h3>Structured re-evaluation of Partner–AutoStore dynamics</h3><p>Reset expectations, responsibilities, accountabilities, and shared goals. Use Phase 2 partner conversations to map incentives, constraints, and ownership ambiguity.</p></div></div>
-      <div class="forward-item"><span class="num">03</span><div class="content"><h3>Define a pragmatic Voice of Customer approach</h3><p>After Forrester input, propose minimum viable end-customer measurement — what, when, who owns — including partner-aligned metric sharing if viable.</p></div></div>
-      <div class="forward-item"><span class="num">04</span><div class="content"><h3>Make qualitative signals capturable and queryable</h3><p>Stand up a low-friction capture pipeline so daily learnings become usable evidence (themes, trends, examples) for synthesis and decision-making.</p></div></div>
+    <h2 class="section anim">Overarching<br>CX learnings</h2>
+    <div class="learning-list anim anim-d1">
+      <div class="learning">
+        <h3><span class="num">1</span>Customer access is not structurally managed</h3>
+        <p>AutoStore lacks a consistent, transparent system for accessing end-customers. Contact depends on personal networks, and no tool exists to track "total pressure" on any given customer — making outreach inefficient and risky.</p>
+      </div>
+      <div class="learning">
+        <h3><span class="num">2</span>Limited understanding of partner commercial models</h3>
+        <p>AutoStore has inconsistent visibility into how partners' commercial models shape behavior toward end-customers. Many partner SLAs exclude software upgrades and proactive optimization, resulting in customers running 2+ year-old software and "build-it-and-don't-touch-it" offerings.</p>
+      </div>
+      <div class="learning">
+        <h3><span class="num">3</span>Service quality &amp; innovation blocked at the partner layer</h3>
+        <p>Because partners are not incentivized for continuous improvement, customers often never receive performance enhancements embedded in newer software — leading to high variability in service quality and customer experience.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 9: Closing -->
-<div class="slide slide-panel" data-slide="8">
+<!-- Slide 9: Forward path -->
+<div class="slide slide-content" data-slide="8">
+  <div class="header">
+    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
+    <div class="meta"><span>CX Immersion</span><span>autostoresystem.com</span></div>
+  </div>
+  <div class="body">
+    <h2 class="section anim">How I suggest<br>we move<br>forward</h2>
+    <div class="forward-list anim anim-d1">
+      <div class="forward-item"><span class="num">01</span><div class="content"><h3>Use the CX Immersion artifact as the North Star</h3><p>Complete the baseline: current-state narrative, CX variability map, CX truths, blind spots, and value-at-risk framing. Ground all strategic decisions in reality.</p></div></div>
+      <div class="forward-item"><span class="num">02</span><div class="content"><h3>Re-evaluate Partner–AutoStore dynamics</h3><p>Structural misalignments in partner incentives, SLAs, and responsibilities are a major systemic CX opportunity. Phase 2 should define clear responsibilities, shared KPIs, alignment on innovation delivery, and transparent service offerings.</p></div></div>
+      <div class="forward-item"><span class="num">03</span><div class="content"><h3>Define pragmatic Voice of Customer approach</h3><p>After Forrester input, propose minimum viable end-customer measurement — what, when, who owns — including partner-aligned metric sharing if viable.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10: Expected outcomes -->
+<div class="slide slide-content bg-panel" data-slide="9">
+  <div class="header">
+    <div class="logo-area"><svg class="logo-full-sm"><use href="#logo-full"/></svg></div>
+    <div class="meta"><span>CX Immersion</span><span>autostoresystem.com</span></div>
+  </div>
+  <div class="body" style="flex-direction:column;gap:24px">
+    <h2 class="section anim" style="min-width:unset;max-width:unset">Expected outcomes<br><span style="font-weight:400;font-size:18px;color:var(--text2)">Next 60–90 days</span></h2>
+    <div class="outcomes anim anim-d1">
+      <div class="outcome">
+        <div class="icon">📋</div>
+        <div class="content"><h3>Immersion artifact completed</h3><p>Current-state CX narrative, variability map, truths, blind spots, and value-at-risk framing delivered as a shared reference.</p></div>
+      </div>
+      <div class="outcome">
+        <div class="icon">📊</div>
+        <div class="content"><h3>Voice of Customer foundation</h3><p>Measurement strategy defined post-Forrester — what to measure, how, and who owns it.</p></div>
+      </div>
+      <div class="outcome">
+        <div class="icon">🤝</div>
+        <div class="content"><h3>Phase 2 partner involvement</h3><p>Preparation for partner diagnostic conversations to address structural CX ownership gaps.</p></div>
+      </div>
+      <div class="outcome">
+        <div class="icon">🔍</div>
+        <div class="content"><h3>Systemic CX clarity</h3><p>Improved understanding of where CX ownership breaks down across AutoStore and partner layers.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 11: Closing -->
+<div class="slide slide-panel" data-slide="10">
   <div class="panel" style="justify-content:center;align-items:center;text-align:center">
-    <h1 class="divider-title anim" style="font-size:clamp(36px,4vw,56px)">Current-state first.<br><span style="color:var(--red)">Strategy follows.</span></h1>
+    <h1 class="divider-title anim" style="font-size:clamp(36px,4vw,56px)">Understand first.<br><span style="color:var(--red)">Then build.</span></h1>
     <p class="subtitle anim anim-d1" style="max-width:500px;margin-top:16px">Questions, feedback, or areas you'd like me to go deeper on?</p>
     <div class="anim anim-d2" style="margin-top:48px">
       <svg style="height:28px;width:auto"><use href="#logo-full"/></svg>
@@ -326,9 +372,8 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 
 </div>
 
-<!-- Navigation -->
-<div class="slide-counter" id="counter">1 / 9</div>
-<div class="progress" id="progress" style="width:11.1%"></div>
+<div class="slide-counter" id="counter">1 / 11</div>
+<div class="progress" id="progress" style="width:9.1%"></div>
 <div class="nav">
   <button onclick="go(-1)" aria-label="Previous">‹</button>
   <button onclick="go(1)" aria-label="Next">›</button>
@@ -338,29 +383,21 @@ h3.card-title{font-weight:700;font-size:16px;margin-bottom:8px;color:var(--text)
 let cur=0;
 const slides=document.querySelectorAll('.slide');
 const total=slides.length;
-
 function show(n){
   slides.forEach((s,i)=>{s.classList.toggle('active',i===n)});
   document.getElementById('counter').textContent=`${n+1} / ${total}`;
   document.getElementById('progress').style.width=`${((n+1)/total)*100}%`;
 }
-
-function go(d){
-  const next=cur+d;
-  if(next>=0&&next<total){cur=next;show(cur)}
-}
-
+function go(d){const next=cur+d;if(next>=0&&next<total){cur=next;show(cur)}}
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter')go(1);
   if(e.key==='ArrowLeft'||e.key==='Backspace')go(-1);
   if(e.key==='Home'){cur=0;show(0)}
   if(e.key==='End'){cur=total-1;show(cur)}
 });
-
 let tx=0;
 document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX});
 document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?go(1):go(-1)}});
-
 show(0);
 </script>
 </body>
