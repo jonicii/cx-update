@@ -115,6 +115,14 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
 .outcome .content h3{font-weight:700;font-size:15px;margin-bottom:4px}
 .outcome .content p{font-size:13px;color:var(--text2);line-height:1.5}
 
+/* Expandable detail on hover */
+.detail{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s ease,margin .3s ease;opacity:0;margin-top:0;font-size:13px;color:var(--text2);line-height:1.5;border-top:1px solid transparent}
+.card:hover .detail,.blocker:hover .detail,.learning:hover .detail,.outcome:hover .detail{max-height:200px;opacity:1;margin-top:10px;padding-top:10px;border-top:1px solid var(--divider)}
+.card,.blocker,.outcome{transition:transform .2s ease,box-shadow .2s ease;cursor:default}
+.card:hover,.blocker:hover,.outcome:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.learning{transition:background .2s ease;cursor:default;padding-left:8px;padding-right:8px;margin-left:-8px;margin-right:-8px;border-radius:8px}
+.learning:hover{background:rgba(0,0,0,.03)}
+
 /* Animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .slide.active .anim{animation:fadeUp .5s ease both}
@@ -222,22 +230,26 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
       <div class="card">
         <span class="tag tag-progress">In progress</span>
         <h3>Immersion project setup</h3>
-        <p>Engaged cross-functional stakeholders for interviews; high interest in direct customer exposure. However, securing interviews has proven far harder than expected — only 5–10 customers confirmed despite significant effort. Missing contacts, low responsiveness, and protective gatekeeping are systemic barriers.</p>
+        <p>Engaged cross-functional stakeholders for interviews; high interest in direct customer exposure. However, securing interviews has proven far harder than expected — only 5–10 customers confirmed despite significant effort.</p>
+        <div class="detail">Missing contacts, low responsiveness, and protective gatekeeping are systemic barriers. Assumptions entering the role included smoother customer recruitment and broader stakeholder engagement — especially US/APAC has proven significantly more challenging than anticipated.</div>
       </div>
       <div class="card">
         <span class="tag tag-done">Delivered</span>
         <h3>Partner survey — data usability</h3>
-        <p>Previously unreadable PBI output transformed via Genie: partner- and region-specific filtering, comments linked to scores. Insights remain limited due to low response rates.</p>
+        <p>Previously unreadable PBI output transformed via Genie: partner- and region-specific filtering, comments linked to scores.</p>
+        <div class="detail">Insights remain limited due to low response rates, reducing statistical reliability. Advancing structurally beyond data usability requires coordination with Beata, who currently owns the survey.</div>
       </div>
       <div class="card">
         <span class="tag tag-paused">Pending Forrester call</span>
         <h3>End-customer survey exploration</h3>
-        <p>Element and Swisslog confirm NPS/CSAT programs exist, though likely insufficiently AutoStore-specific. Progress pending Forrester advisory call (March 6th).</p>
+        <p>Element and Swisslog confirm NPS/CSAT programs exist, though likely insufficiently AutoStore-specific.</p>
+        <div class="detail">Progress intentionally paused pending Forrester advisory call (March 6th) to avoid premature or misaligned decisions. Hypothesis: partner-held CSAT/NPS lacks AutoStore specificity. Staying aligned with immersion discipline — no solutioning before diagnosing.</div>
       </div>
       <div class="card">
         <span class="tag tag-progress">In progress</span>
         <h3>Qualitative data foundation</h3>
-        <p>Daily conversations surface recurring frictions, but structured capture remains challenging. Considering a Teams-based feedback bot to systematically collect and categorize inputs.</p>
+        <p>Daily conversations surface recurring frictions, but structured capture remains challenging.</p>
+        <div class="detail">Considering a Teams-based feedback bot to systematically collect, categorize, and store inputs — enabling trend queries and turning daily learnings into usable evidence for synthesis and decision-making.</div>
       </div>
     </div>
   </div>
@@ -263,10 +275,12 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
       <div class="blocker">
         <h3>US &amp; APAC customer interviews</h3>
         <p>Lower internal prioritization, more protective customer-access behavior, and no central customer-access management system.</p>
+        <div class="detail">These challenges reflect broader structural gaps in how AutoStore manages customer access. No tool exists to track outreach across teams, making coordination fragile and dependent on personal relationships.</div>
       </div>
       <div class="blocker">
         <h3>End-customer survey framework</h3>
         <p>Intentionally paused until Forrester discussion — staying aligned with immersion discipline (no solutioning before diagnosing).</p>
+        <div class="detail">Forrester advisory call scheduled March 6th. Goal: avoid building a low-value survey by getting expert input on measurement approach before committing to a framework.</div>
       </div>
       <div class="blocker">
         <h3>Partner survey ownership</h3>
@@ -300,15 +314,18 @@ h2.section{font-weight:900;font-size:clamp(28px,3vw,44px);line-height:1.05;lette
     <div class="learning-list anim anim-d1">
       <div class="learning">
         <h3><span class="num">1</span>Customer access is not structurally managed</h3>
-        <p>AutoStore lacks a consistent system for accessing end-customers. Contact depends on personal networks, no tool tracks "total pressure" on customers, and internal gatekeeping is high. Result: securing just 5–10 interviews has taken disproportionate effort — a symptom of a structural gap, not a resourcing issue.</p>
+        <p>AutoStore lacks a consistent system for accessing end-customers. Contact depends on personal networks, no tool tracks "total pressure" on customers, and internal gatekeeping is high.</p>
+        <div class="detail">Result: securing just 5–10 interviews has taken disproportionate effort — a symptom of a structural gap, not a resourcing issue. This makes any customer-facing initiative (not just CX) harder and riskier than it needs to be.</div>
       </div>
       <div class="learning">
         <h3><span class="num">2</span>Limited understanding of partner commercial models</h3>
-        <p>AutoStore has inconsistent visibility into how partners' commercial models shape behavior toward end-customers. Many partner SLAs exclude software upgrades and proactive optimization, resulting in customers running 2+ year-old software and "build-it-and-don't-touch-it" offerings.</p>
+        <p>AutoStore has inconsistent visibility into how partners' commercial models shape behavior toward end-customers. Many partner SLAs exclude software upgrades and proactive optimization.</p>
+        <div class="detail">Customers end up running 2+ year-old software, missing significant innovation. In some models, software upgrades represent a financial liability due to integration risk. Partners sell "build-it-and-don't-touch-it" offerings where any post-go-live work becomes a commercial dispute. AutoStore has no consistent way of knowing what partners have sold — or are incentivized to deliver.</div>
       </div>
       <div class="learning">
         <h3><span class="num">3</span>Service quality &amp; innovation blocked at the partner layer</h3>
-        <p>Because partners are not incentivized for continuous improvement, customers often never receive performance enhancements embedded in newer software — leading to high variability in service quality and customer experience.</p>
+        <p>Because partners are not incentivized for continuous improvement, customers often never receive performance enhancements embedded in newer software.</p>
+        <div class="detail">This extends beyond software to general customer support and optimization, which are often outside SLAs and therefore margin-dilutive for partners. While some partners actively invest in managed services and proactive optimization, the result overall is high variability in service quality and customer experience, even when AutoStore fulfills its own responsibilities.</div>
       </div>
     </div>
   </div>
